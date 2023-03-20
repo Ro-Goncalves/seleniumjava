@@ -7,7 +7,7 @@
 		<div th:replace="~{base :: logo}"></div>
 	
 		<div class="container">
-			<div th:replace="~{base :: titulo('Leilões cadastrados')}"></div>
+			<div id="leiloes-cadastrados" th:replace="~{base :: titulo('Leilões cadastrados')}"></div>
 		
 			<div class="alert alert-primary" role="alert" th:if="${message}">
 				<span th:text="${message}"></span>
