@@ -43,6 +43,10 @@ Enfim, para saber mais, veja o curso. Procurarei aqui comentar mais sobre os tes
 
 Antes de escrever o código precisamos intender o que queremos fazer, para isso executamos o caso de uso manualmente em nossa aplicação.
 
+## Page Objects
+
+è um padrão de projeto.
+
 ## Referências
 
 [ONEDAYTESTING - Pirâmide De Testes](https://blog.onedaytesting.com.br/piramide-de-teses/)
