@@ -15,16 +15,26 @@ public class WebDriverUtil {
     private Wait<WebDriver> wait;
 
     public WebDriverUtil(Urls initialUrl){
-        System.setProperty("webdriver.gecko.driver", "assets/geckodriver.exe");
-        this.browser = new FirefoxDriver();
-        this.browser.navigate().to(initialUrl.getUrl());
-
+        setWebDriver();   
         setWait();
+        this.browser.navigate().to(initialUrl.getUrl());
     }
 
     public WebDriverUtil(WebDriver browser){
         this.browser = browser;
         setWait();
+    }
+
+    public WebDriverUtil(){
+        setWebDriver();
+        setWait();
+    }
+
+    
+
+    private void setWebDriver(){
+        System.setProperty("webdriver.gecko.driver", "assets/geckodriver.exe");
+        this.browser = new FirefoxDriver();
     }
 
     private void setWait(){
@@ -58,7 +68,7 @@ public class WebDriverUtil {
         return this.browser.getPageSource().contains(contains);
     }
 
-    public void navigateTo(String url){
+    public void navigateTo(String url){       
         this.browser.navigate().to(url);
     }
 
