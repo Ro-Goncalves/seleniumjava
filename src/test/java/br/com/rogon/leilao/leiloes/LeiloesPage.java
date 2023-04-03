@@ -15,6 +15,8 @@ public class LeiloesPage extends WebDriverUtil{
 
     public CadastroLeilaoPage loadForm(){
         navigateTo(Urls.LEILAO_CADASTRO.getUrl());
+        waitForLoading("button-submit");
+        
         return new CadastroLeilaoPage(browser);
     }
 

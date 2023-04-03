@@ -12,16 +12,25 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 
 import br.com.rogon.PagesUtil;
+import br.com.rogon.Urls;
 import br.com.rogon.leilao.dto.NovoLeilaoDto;
 
 public class LeiloesTest {
     
     private LeiloesPage leiloesPage;
+    private CadastroLeilaoPage paginaDeCadastro;
+    private String hoje;
+    private NovoLeilaoDto novoLeilao;
 
-    // @BeforeEach
-    // void setUp(){
-        
-    // }
+    @BeforeEach
+    void setUp(){
+        WebDriver browser = new PagesUtil().login();
+        this.leiloesPage = new LeiloesPage(browser);
+        this.paginaDeCadastro = leiloesPage.loadForm();
+        this.novoLeilao = new NovoLeilaoDto();
+        this.hoje = LocalDate.now()
+                               .format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    }
 
     @AfterEach
     void tearDown(){
@@ -29,21 +38,22 @@ public class LeiloesTest {
     }
 
     @Test
-    void deveriaCadastrarLeilao(){
-        WebDriver browser = new PagesUtil().login();
-        this.leiloesPage = new LeiloesPage(browser);
-        CadastroLeilaoPage paginaDeCadastro = leiloesPage.loadForm();
+    void deveriaCadastrarLeilao(){        
+        novoLeilao.setNome("Leilão Teste Dia: " + hoje);
+        novoLeilao.setValorInicial(new BigDecimal("500.00"));
+        novoLeilao.setDataAbertura(hoje);
 
-        String hoje = LocalDate.now()
-                               .format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.leiloesPage = paginaDeCadastro.cadastrarLeilao(novoLeilao);
+        Assertions.assertTrue(paginaDeCadastro.isLeilaoCadastrado(novoLeilao));
+    }
 
-        // NovoLeilaoDto novoLeilao = new NovoLeilaoDto();
-        // novoLeilao.setNome("Leilão Teste Dia: " + hoje);
-        // novoLeilao.setValorInicial(new BigDecimal("500.00"));
-        // novoLeilao.setDataAbertura(hoje);
+    @Test
+    void deveriaValidarCadastroDeLeilao(){       
+        this.leiloesPage = paginaDeCadastro.cadastrarLeilaoVazio();
 
-        // Assertions.assertDoesNotThrow(() -> paginaDeCadastro.waitForLoading("tabela-leiloes"));
-        // this.leiloesPage = paginaDeCadastro.cadastrarLeilao(novoLeilao);
-        // Assertions.assertTrue(paginaDeCadastro.isLeilaoCadastrado(novoLeilao));
+        Assertions.assertDoesNotThrow(() -> paginaDeCadastro.waitForLoading("nome"));
+        Assertions.assertTrue(this.paginaDeCadastro.isPageIn(Urls.LEILAO.getUrl()));
+        Assertions.assertTrue(this.paginaDeCadastro.isMensagensDeValidacaoVisiveis());
+        
     }
 }

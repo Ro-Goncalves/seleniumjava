@@ -7,11 +7,6 @@ public class PagesUtil {
     private WebDriverUtil webDriverUtil;
     private WebDriver browser;
 
-    // public PagesUtil(){
-    //     webDriverUtil = new WebDriverUtil();
-    //     this.browser = webDriverUtil.getBrowser();
-    // }
-
     public WebDriver login(){
         webDriverUtil = new WebDriverUtil(Urls.LOGIN);
         browser = webDriverUtil.getBrowser();
@@ -22,6 +17,8 @@ public class PagesUtil {
         browser.findElement(By.id("password")).sendKeys("pass");
 
         browser.findElement(By.id("login-form")).submit();
+
+        webDriverUtil.waitForLoading("tabela-leiloes");
 
         return browser;
     }

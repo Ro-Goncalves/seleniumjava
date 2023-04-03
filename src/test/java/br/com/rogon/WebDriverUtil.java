@@ -61,6 +61,7 @@ public class WebDriverUtil {
     }
 
     public boolean isPageIn(String page){
+        System.out.println(this.browser.getCurrentUrl());
         return this.browser.getCurrentUrl().equals(page);
     }
 
