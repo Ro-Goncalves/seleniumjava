@@ -1,6 +1,7 @@
 package br.com.rogon;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -17,20 +18,27 @@ public class WebDriverUtil {
     public WebDriverUtil(Urls initialUrl){
         setWebDriver();   
         setWait();
+        setManage();
         this.browser.navigate().to(initialUrl.getUrl());
     }
 
     public WebDriverUtil(WebDriver browser){
         this.browser = browser;
         setWait();
+        setManage();
     }
 
     public WebDriverUtil(){
         setWebDriver();
         setWait();
+        setManage();
     }
 
-    
+    private void setManage(){
+        this.browser.manage()
+                    .timeouts()
+                    .implicitlyWait(5, TimeUnit.SECONDS);
+    }
 
     private void setWebDriver(){
         System.setProperty("webdriver.gecko.driver", "assets/geckodriver.exe");
