@@ -39,13 +39,21 @@ Contextualizando, no curso, da Alura, é passado um projeto que contém um site 
 
 Enfim, para saber mais, veja o curso. Procurarei aqui comentar mais sobre os testes em si.
 
-## Testando O Login
+## Aos testes
 
-Antes de escrever o código precisamos intender o que queremos fazer, para isso executamos o caso de uso manualmente em nossa aplicação.
+Vou fazer um tanto quanto diferente do que eu vinha fazendo até aqui, ao infés de descrever tudo o que vi no curso, colocarei somente o que achar interessante. Estou meio que sem tempo para escrever um monte de coisas que ninguém vai ler, rsrsr. Let's bora.
+
+Bem a idéia dos testes ponta-a-ponta é simular o comporatamento do usuário na aplicação e ver se ela responde de forma adequada, dito isso, iremos testar o login, cadastro de leilões e oferta no leilão. Por isso simulamos o caminho pelo qual o usuário deverá passar e pensamos em como automatizar e analisar se a aplicação realizou o que desejamos.
+
+Não é um bixo de 7 cabeças, uma hidra com 6  talvez, e você não sabe que é uma.
 
 ## Page Objects
 
-è um padrão de projeto.
+Essa é uma recomendação do desenvolvedor do Selenium, com esse padrão conseguimos separar o código que controla a página dó código que realizará as acertivas, isso facilita muito a vida, pois possibilita que reutilizemos os POs. Não tem muito mais o que falar, em resumo é isso aí.
+
+## Alguns comando úteis
+
+Primeiro de tudo devemos instnaciar um `WebDriver`, vamos chama-lo de **browser**
 
 ## Referências
 
