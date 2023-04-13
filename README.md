@@ -53,7 +53,85 @@ Essa é uma recomendação do desenvolvedor do Selenium, com esse padrão conseg
 
 ## Alguns comando úteis
 
-Primeiro de tudo devemos instnaciar um `WebDriver`, vamos chama-lo de **browser**
+Primeiro de tudo devemos instnaciar um `WebDriver`, vamos chama-lo de **browser**. Cada navegador terá seu próprio WebDrive
+
+```java
+private void setWebDriver(){
+    System.setProperty("webdriver.gecko.driver", "assets/geckodriver.exe");
+    this.browser = new FirefoxDriver();   
+}
+```
+
+Isso fará com que o Selenium abrar uma instância do navagador, e com esse objeto teremos o poder de manupular essa página.
+
+Primeiro teremos que navagar até o elemento que quereremos realizar alguma operação sobre, para isso podemos usar `browser.findElement`, e para saber qual o objeto estamos procurando, podemos usar a classe `By`.
+
+```java
+browser.findElement(By.id("username"))
+```
+
+Existem varias formas de buscar um elemento, conforme aparecer algum caso *diferentão* basta olhar a documentação.
+
+Agora podemos executar algumas ações sobre esse elemento, por exemplo digitar alguma mensagem com `sendKeys("fulano")`
+
+```java
+browser.findElement(By.id("username")).sendKeys("fulano");
+```
+
+Enviar um formulário com `submit()`
+
+```java
+browser.findElement(By.id("login-form")).submit();
+```
+
+Navegar entre as urls com `navigate().to()`
+
+```java
+browser.navigate().to(url);
+```
+
+Buscar a url atual com `getCurrentUrl()`
+
+```java
+browser.getCurrentUrl();
+```
+
+Pegar todo o conteúdo da página com `getPageSource()`
+
+```java
+browser.getPageSource();
+```
+
+O nevagador pode demorar um pouco para carregar a página, é legar criar um `FluentWait`.
+
+```java
+private void setWait(){
+    this.wait = new FluentWait<WebDriver>(browser)
+                    .withTimeout(Duration.ofSeconds(10))
+                    .pollingEvery(Duration.ofSeconds(2))
+                    .ignoring(NoSuchElementException.class);
+}
+```
+
+Ou um `implicitlyWait`.
+
+```java
+private void setManage(){
+    this.browser.manage()
+                .timeouts()
+                .implicitlyWait(5, TimeUnit.SECONDS);
+}
+```
+
+Podemos pegar o testo do elemento com `getText()`
+
+```java
+browser.findElement(By.id("usuario-logado")).getText(); 
+```
+
+Enfim, existe uma infinidade de coisas que da para fazer com essa biblioteca, com o que foi exposto aqui já da para brincar bastante.
+
+FIM???
 
 ## Referências
 
