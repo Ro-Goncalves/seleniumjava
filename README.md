@@ -2,9 +2,9 @@
 
 ## Controlando o navegador
 
-E vamos ao tão esperado, ao menos por mim, Selenium. Vi algo sobre esse tema quando estudava um pouco de Python, já foi muito legal, e me deu ideias incrivéis de lugares em que eu poderia implementar alguma automatização, por exemplo a exclusão do Gravame. O foco do curso será a automatização do testes de aceitação, veja um grande potêncial dessa ferramenta na robotização de processos, e é isso que eu estou de olho, é aqui que quero chegar.
+E vamos ao tão esperado, ao menos por mim, Selenium. Vi algo sobre esse tema quando estudava um pouco de Python, já foi muito legal, e me deu ideias incrivéis de lugares em que eu poderia implementar alguma automatização. O foco do curso será a automatização do testes de aceitação, veja um grande potêncial dessa ferramenta na robotização de processos, e é isso que eu estou de olho, é aqui que quero chegar.
 
-Voltamos ao tema do curso, testes, não o meu curso, isso que você está lendo não é um curso. **Pirâmide de testes** define uma forma de ver os testes, o quanto devemos ter de cada teste e o quando de custo teremos. Podemos definir três níveis de teste *Unidade, Integração e Ponta a Ponta*, cada um tem sua responsabilidade.
+Primeiro a motivação do curso: **Pirâmide de testes**, ela define uma forma de ver os testes, o quanto devemos ter de cada teste e o quando de custo teremos. Podemos definir três níveis de teste *Unidade, Integração e Ponta a Ponta*, cada um tem sua responsabilidade.
 
 O teste de **Unidade** é o mais simples e barato de se criar, por isso tem um custo baixo e é criado em quantidade superior aos outros. Como o nome indica ele testa a menor unidade do sistema, algo entre classes e método. Não é meu foco aqui.
 
@@ -37,15 +37,7 @@ public void hello(){
 
 Contextualizando, no curso, da Alura, é passado um projeto que contém um site de leiloes, essa é a aplicação que iremos testar, por isso da linha `browser.navigate().to("http://localhost:8080/leiloes");`
 
-Enfim, para saber mais, veja o curso. Procurarei aqui comentar mais sobre os testes em si.
-
-## Aos testes
-
-Vou fazer um tanto quanto diferente do que eu vinha fazendo até aqui, ao infés de descrever tudo o que vi no curso, colocarei somente o que achar interessante. Estou meio que sem tempo para escrever um monte de coisas que ninguém vai ler, rsrsr. Let's bora.
-
-Bem a idéia dos testes ponta-a-ponta é simular o comporatamento do usuário na aplicação e ver se ela responde de forma adequada, dito isso, iremos testar o login, cadastro de leilões e oferta no leilão. Por isso simulamos o caminho pelo qual o usuário deverá passar e pensamos em como automatizar e analisar se a aplicação realizou o que desejamos.
-
-Não é um bixo de 7 cabeças, uma hidra com 6  talvez, e você não sabe que é uma.
+Enfim, para saber mais, veja o curso.
 
 ## Page Objects
 
